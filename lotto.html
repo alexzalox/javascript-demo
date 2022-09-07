@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>樂透號碼預測</h1>
+    <script>
+
+        let arr1 = [];
+        console.log(arr1);
+        arr1.push("Jerry");
+        arr1.push(175.4);
+        arr1.push(56);
+        console.log(arr1);
+        console.log(arr1.length);
+        console.log(arr1[0]);
+        // for (let 1=0;i <arr1.length,i++)
+
+        /**
+         * 函式宣告
+         * 六個不重複的號碼
+        */
+        function randInt(start, end, count = 6) {
+            let lotto = [];
+            if (count <= 0) {
+                return "次數錯誤";
+            }
+
+            do {
+                let x = Math.floor(Math.random() * (end - start + 1)) + start;
+                if (!lotto.includes(x)) {
+                    lotto.push(x);
+                }
+            } while (lotto.length !== count)
+
+            return lotto;
+        }
+
+        lottoNumber = randInt(1, 49, 6);
+
+        console.log(lottoNumber, lottoNumber.join(","));
+
+        document.write(`<h2 style="color:red">${lottoNumber.join(" , ")}</h2>`)
+
+
+
+    </script>
+</body>
+
+</html>
