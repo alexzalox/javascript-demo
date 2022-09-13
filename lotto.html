@@ -4,28 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>樂透號碼</title>
 </head>
 
 <body>
     <h1>樂透號碼預測</h1>
     <script>
-
-        let arr1 = [];
-        console.log(arr1);
-        arr1.push("Jerry");
-        arr1.push(175.4);
-        arr1.push(56);
-        console.log(arr1);
-        console.log(arr1.length);
-        console.log(arr1[0]);
-        // for (let 1=0;i <arr1.length,i++)
-
         /**
          * 函式宣告
          * 六個不重複的號碼
         */
+
         function randInt(start, end, count = 6) {
             let lotto = [];
             if (count <= 0) {
@@ -37,16 +27,43 @@
                 if (!lotto.includes(x)) {
                     lotto.push(x);
                 }
-            } while (lotto.length !== count)
+
+            } while (lotto.length != count);
+
+            // a-b>0 位置交換(升序)
+            lotto.sort((a, b) => a - b);
+
+            lotto.push(Math.floor(Math.random() * (end - start + 1)) + start);
+
 
             return lotto;
         }
 
-        lottoNumber = randInt(1, 49, 6);
+        let lotto = [];
 
-        console.log(lottoNumber, lottoNumber.join(","));
+        let counter = prompt("請輸入預測次數");
 
-        document.write(`<h2 style="color:red">${lottoNumber.join(" , ")}</h2>`)
+        for (let i = 0; i < counter; i++) {
+            lottoNumber = randInt(1, 49, 6);
+            lotto.push(lottoNumber);
+
+            // console.log(lottoNumber, lottoNumber.join(","));
+        }
+
+        console.log(lotto);
+        let tempStr = "<ul>";
+        for (let i = 0; i < lotto.length; i++) {
+            console.log(lotto[i].join(","));
+            // tempStr += "<li>" + lotto[i].join(",") + "</li>";
+            tempStr += `<li>${lotto[i].join(",")}</li>`;
+            // for (let j = 0; j < lotto[i].length; j++) {
+            //     console.log(lotto[i][j]);
+            // }
+        }
+        tempStr += "</ul>";
+        document.write(tempStr);
+        // document.write(`<h2 style="color:red">${lottoNumber.join("|")}</h2>`)
+
 
 
 
